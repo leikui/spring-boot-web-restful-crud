@@ -1,2 +1,2 @@
 # spring-boot-web-restful-crud
-SpringBoot整合thymeleafDemo
+SpringBoot整合thymeleaf的CRUD Demo
