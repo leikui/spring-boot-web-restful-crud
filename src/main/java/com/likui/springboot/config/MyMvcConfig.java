@@ -1,6 +1,5 @@
 package com.likui.springboot.config;
 
-import com.likui.springboot.component.LoginHandlerInterceptor;
 import com.likui.springboot.component.MyLocalResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,8 +41,8 @@ public class MyMvcConfig implements WebMvcConfigurer {
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 //拦截的路径  与 不拦截白名单
-                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                        .excludePathPatterns("/","/index.html","/user/login","/webjars/**","/asserts/**");
+//                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+//                        .excludePathPatterns("/","/index.html","/user/login","/webjars/**","/asserts/**");
             }
         };
         return mvcConfigurer;
