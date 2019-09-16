@@ -72,8 +72,8 @@
 									<td th:text="${emp.lastName}"></td>
 									<td th:text="${emp.email}"></td>
 									<td th:text="${emp.gender}==0?'女':'男'"></td>
-									<td th:text="${emp.department.departmentName}"></td>
-									<td th:text="${#dates.format(emp.birth,'yyyy-MM-dd HH:mm:ss')}"></td>
+									<td th:text="${emp.departmentName}"></td>
+<!--									<td th:text="${#dates.format(emp.birth,'yyyy-MM-dd HH:mm:ss')}"></td>-->
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>
 										<button th:attr="del_uri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>
