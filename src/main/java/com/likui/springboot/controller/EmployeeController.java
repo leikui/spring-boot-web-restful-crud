@@ -1,15 +1,15 @@
 package com.likui.springboot.controller;
 
-import com.likui.springboot.eneity.Department;
 import com.likui.springboot.eneity.Employee;
-import com.likui.springboot.mappers.DepartmentDao;
-import com.likui.springboot.mappers.EmployeeDao;
+import com.likui.springboot.service.EmployeeService;
+import com.likui.springboot.vo.EmployeesVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @ClassName: EmployeeController
@@ -19,13 +19,11 @@ import java.util.Collection;
  * @Version: 1.0
  */
 @Controller
-public class EmployeeController {
+public class EmployeeController implements Serializable {
 
     @Autowired
-    EmployeeDao employeeDao;
+    EmployeeService employeeService;
 
-    @Autowired
-    DepartmentDao departmentDao;
     /**
      * 查询所有员工信息列表
      * @return
@@ -33,9 +31,10 @@ public class EmployeeController {
     @GetMapping("emps")
     public String empList(Model model){
 
-        Collection<Employee> employees = employeeDao.getAll();
+        List<EmployeesVO> employeesVOS = employeeService.selectAllEmp();
+//        Collection<Employee> employees = employeeDao.getAll();
         //放在请求域中
-        model.addAttribute("emps",employees);
+        model.addAttribute("emps",employeesVOS);
         return "emp/list";
     }
 
@@ -45,8 +44,8 @@ public class EmployeeController {
      */
     @GetMapping("emp")
     public String toAddPage(Model model){
-        Collection<Department> departments = departmentDao.getDepartments();
-        model.addAttribute("depts",departments);
+//        Collection<Department> departments = departmentDao.getDepartments();
+//        model.addAttribute("depts",departments);
         return "emp/add";
     }
 
@@ -60,7 +59,7 @@ public class EmployeeController {
 
         System.out.println("employee信息："+ employee);
         //redirect 重定向
-        employeeDao.save(employee);
+//        employeeDao.save(employee);
         return "redirect:emps";
     }
 
@@ -70,12 +69,12 @@ public class EmployeeController {
      */
     @GetMapping("emp/{id}")
     public String toEditPage(@PathVariable("id") Integer id,Model model){
-        Employee employee = employeeDao.get(id);
-
-        Collection<Department> departments = departmentDao.getDepartments();
-        model.addAttribute("depts",departments);
-        model.addAttribute("emp",employee);
-        //回到修改页面 (add页面 修改 添加 重用)
+//        Employee employee = employeeDao.get(id);
+//
+//        Collection<Department> departments = departmentDao.getDepartments();
+//        model.addAttribute("depts",departments);
+//        model.addAttribute("emp",employee);
+//        //回到修改页面 (add页面 修改 添加 重用)
         return "emp/add";
     }
 
@@ -85,7 +84,7 @@ public class EmployeeController {
     @PutMapping("emp")
     public String updateEmp(Employee employee){
         System.out.println("修改的员工数据" + employee);
-        employeeDao.save(employee);
+//        employeeDao.save(employee);
         return "redirect:/emps";
     }
 
@@ -95,7 +94,7 @@ public class EmployeeController {
     @DeleteMapping("emp/{id}")
     public String deleteEmp(@PathVariable("id") Integer id){
 
-        employeeDao.delete(id);
+//        employeeDao.delete(id);
         return "redirect:/emps";
     }
 }

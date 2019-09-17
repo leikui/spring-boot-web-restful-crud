@@ -1,21 +1,31 @@
-package com.likui.springboot.eneity;
+package com.likui.springboot.vo;
 
-public class Employee {
+/**
+ * @ClassName: Employees
+ * @Description: TODO
+ * @Author: LiKui
+ * @Date: 2019-9-12 18:04
+ * @Version: 1.0
+ */
 
-	private Integer id;
+/**
+ * 所有员工 vo 类
+ */
+public class EmployeesVO {
+    private Integer id;
     private String lastName;
     private String email;
     private Integer gender;
-    private Integer deptId;
+    private String departmentName;
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "EmployeesVO{" +
                 "id=" + id +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
-                ", deptId=" + deptId +
+                ", departmentName='" + departmentName + '\'' +
                 '}';
     }
 
@@ -51,11 +61,11 @@ public class Employee {
         this.gender = gender;
     }
 
-    public Integer getDeptId() {
-        return deptId;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 }

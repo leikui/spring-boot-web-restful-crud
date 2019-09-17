@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.likui.springboot.mapper.EmployeeMapper">
+    <!--添加员工-->
+    <insert id="addEmp" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+            employee(lastName,email,gender,dept_id)
+        values
+            (#{lastName},#{email},#{gender},#{deptId})
+    </insert>
+
+    <!--查询所有员工信息-->
+    <select id="selectAllEmp" resultType="com.likui.springboot.vo.EmployeesVO">
+        SELECT
+            t.id,lastName,email,gender,department_name departmentName
+        FROM
+            employee t
+        LEFT JOIN
+            department a
+        ON
+            t.dept_id = a.id
+
+    </select>
+
+</mapper>
